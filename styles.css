@@ -1,0 +1,23 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.debug {
+  position: fixed;
+  background-color: white;
+  padding: 5px;
+  margin: 5px;
+}
+
+.group {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.target {
+  flex: auto;
+  width: 33.33%;
+}

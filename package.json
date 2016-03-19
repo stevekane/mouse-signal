@@ -1,0 +1,23 @@
+{
+  "name": "mouser",
+  "version": "1.0.0",
+  "description": "Global mouse handler with signal-like higher-order API to easily scope events to elements",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test",
+    "build": "browserify -d -o dist/app.js src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/stevekane/mouser.git"
+  },
+  "keywords": [
+    "mouse"
+  ],
+  "author": "Steve Kane",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stevekane/mouser/issues"
+  },
+  "homepage": "https://github.com/stevekane/mouser#readme"
+}
