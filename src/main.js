@@ -1,9 +1,19 @@
-var MOUSE_MODE = {
-  INACTIVE: 0,
-  ACTIVE: 1,
-  JUST_DOWN: 2,
-  DOWN: 3,
-  JUST_UP: 4
+var MOUSE_MODE = Enum(
+  'INACTIVE',
+  'ACTIVE',
+  'JUST_DOWN',
+  'DOWN',
+  'JUST_UP'
+)
+
+function Enum () {
+  var values = Array.prototype.slice.call(arguments, 0)
+  var en = {}
+
+  for (var i = 0, v; v = values[i++];) {
+    en[v] = v
+  }
+  return en
 }
 
 function MouseState (el) {
@@ -158,6 +168,10 @@ function doSomething () {
   }
 }
 
+function replacer (key, value) {
+  return value instanceof HTMLElement ? value.toString() : value
+}
+
 requestAnimationFrame(function update () {
   last = current
   current = Date.now()
@@ -167,8 +181,8 @@ requestAnimationFrame(function update () {
   updateMouseState(dT, state.mouser, state.local)
   doSomething()
 
-  GLOBAL.innerText = JSON.stringify(state.mouser, null, 2)
-  LOCAL.innerText = JSON.stringify(state.local, null, 2)
+  GLOBAL.innerText = JSON.stringify(state.mouser, replacer, 2)
+  LOCAL.innerText = JSON.stringify(state.local, replacer, 2)
 
   requestAnimationFrame(update)
 })
