@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node test",
-    "build": "browserify -d -o dist/app.js src/main.js"
+    "build": "browserify -d -o dist/app.js examples/main.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/stevekane/mouser/issues"
   },
-  "homepage": "https://github.com/stevekane/mouser#readme"
+  "homepage": "https://github.com/stevekane/mouser#readme",
+  "dependencies": {
+    "tiny-enum": "^1.1.0"
+  }
 }
