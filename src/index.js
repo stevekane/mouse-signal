@@ -80,9 +80,11 @@ function MouseSignal (el) {
   }
 }
 
-MouseSignal.update = function update (dT, ms) {
-  var bcr = ms.el.getBoundingClientRect()
+MouseSignal.ButtonState = ButtonState
 
+MouseSignal.BUTTON_MODE = BUTTON_MODE
+
+MouseSignal.update = function update (dT, ms) {
   ms.previous[0] = ms.current[0]
   ms.previous[1] = ms.current[1]
 
@@ -95,6 +97,7 @@ MouseSignal.update = function update (dT, ms) {
 
   if   (!ms.active || ms.left.mode.UP || ms.left.mode.JUST_DOWN) ms.left.downDuration = 0
   else                                                           ms.left.downDuration += dT
+
   return ms
 }
 
@@ -118,11 +121,4 @@ MouseSignal.prototype.toString = function () {
          '\n-- HELD_FOR(ms): ' + leftduration +
          '\n-- DOWN: ' + leftdn +
          '\n-- UP: ' + leftup
-}
-
-function collidesBcrPoint (bcr, x, y) {
-  return bcr.left < x && 
-         bcr.right > x &&
-         bcr.top < y &&
-         bcr.bottom > y
 }
