@@ -1,7 +1,7 @@
 {
-  "name": "mouser",
+  "name": "mouse-signal",
   "version": "1.0.0",
-  "description": "Global mouse handler with signal-like higher-order API to easily scope events to elements",
+  "description": "Turn mouse events for a region into a simple queryable data structure",
   "main": "index.js",
   "scripts": {
     "test": "node test",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/stevekane/mouser.git"
+    "url": "git+ssh://git@github.com/stevekane/mouse-signal.git"
   },
   "keywords": [
     "mouse"
@@ -17,9 +17,9 @@
   "author": "Steve Kane",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/stevekane/mouser/issues"
+    "url": "https://github.com/stevekane/mouse-signal/issues"
   },
-  "homepage": "https://github.com/stevekane/mouser#readme",
+  "homepage": "https://github.com/stevekane/mouse-signal#readme",
   "dependencies": {
     "tiny-enum": "^1.1.0"
   }
