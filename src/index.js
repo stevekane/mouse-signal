@@ -8,6 +8,7 @@ function ButtonState () {
   this.nextMode = BUTTON_MODE.UP
   this.down = [ 0, 0 ]
   this.up = [ 0, 0 ]
+  this.downDuration = 0
 }
 
 function MouseSignal (el) {
@@ -34,8 +35,8 @@ function MouseSignal (el) {
     var x = e.clientX - bcr.left
     var y = e.clientY - bcr.top
 
-    self.left.nextMode = self.left.mode
     self.active = true
+    self.left.nextMode = self.left.mode
     self.current[0] = x
     self.current[1] = y
   }
@@ -81,9 +82,7 @@ function MouseSignal (el) {
 
 MouseSignal.update = function update (dT, ms) {
   var bcr = ms.el.getBoundingClientRect()
-  var collides = collidesBcrPoint(bcr, ms.current[0], ms.current[1])
 
-  ms.active = ms.active && collides
   ms.previous[0] = ms.current[0]
   ms.previous[1] = ms.current[1]
 
@@ -96,6 +95,7 @@ MouseSignal.update = function update (dT, ms) {
 
   if   (!ms.active || ms.left.mode.UP || ms.left.mode.JUST_DOWN) ms.left.downDuration = 0
   else                                                           ms.left.downDuration += dT
+  return ms
 }
 
 MouseSignal.prototype.toString = function () {

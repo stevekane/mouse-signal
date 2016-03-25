@@ -6,7 +6,7 @@ var GLOBAL = document.getElementById('global')
 var LOCAL = document.getElementById('local')
 var FOCUSED = TARGETS[5]
 var global = new MouseSignal(document.body)
-//var local = new MouseSignal.Scoped(FOCUSED)
+var local = new MouseSignal(FOCUSED)
 var state = {
   global: global,
   local: local
@@ -35,7 +35,11 @@ function doSomething () {
 }
 
 for (var key in state.global.eventListeners) {
-  document.body.addEventListener(key, state.global.eventListeners[key])
+  state.global.el.addEventListener(key, state.global.eventListeners[key])
+}
+
+for (var key in state.local.eventListeners) {
+  state.local.el.addEventListener(key, state.local.eventListeners[key])
 }
 
 requestAnimationFrame(function update () {
@@ -44,10 +48,11 @@ requestAnimationFrame(function update () {
   dT = current - last
 
   MouseSignal.update(dT, state.global)
+  MouseSignal.update(dT, state.local)
   doSomething()
 
-  GLOBAL.innerText = state.global.toString()
-  //LOCAL.innerText = JSON.stringify(state.local, replacer, 2)
+  GLOBAL.innerText = state.global
+  LOCAL.innerText = state.local
 
   requestAnimationFrame(update)
 })
