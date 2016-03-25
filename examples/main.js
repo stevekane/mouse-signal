@@ -56,4 +56,3 @@ requestAnimationFrame(function update () {
 
   requestAnimationFrame(update)
 })
-window.state = state
