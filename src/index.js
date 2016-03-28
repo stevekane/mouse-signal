@@ -11,7 +11,7 @@ function ButtonState () {
   this.downDuration = 0
 }
 
-function MouseSignal (el) {
+function MouseSignal () {
   var self = this
 
   function mouseenter (e) {
@@ -31,7 +31,7 @@ function MouseSignal (el) {
   }
 
   function mousemove (e) {
-    var bcr = self.el.getBoundingClientRect()
+    var bcr = this.getBoundingClientRect()
     var x = e.clientX - bcr.left
     var y = e.clientY - bcr.top
 
@@ -42,7 +42,7 @@ function MouseSignal (el) {
   }
 
   function mousedown (e) {
-    var bcr = self.el.getBoundingClientRect()
+    var bcr = this.getBoundingClientRect()
     var x = e.clientX - bcr.left
     var y = e.clientY - bcr.top
 
@@ -54,7 +54,7 @@ function MouseSignal (el) {
   }
 
   function mouseup (e) {
-    var bcr = self.el.getBoundingClientRect()
+    var bcr = this.getBoundingClientRect()
     var x = e.clientX - bcr.left
     var y = e.clientY - bcr.top
 
@@ -64,7 +64,6 @@ function MouseSignal (el) {
     self.left.nextMode = BUTTON_MODE.UP
   }
 
-  this.el = el
   this.active = false
   this.left = new ButtonState
   this.previous = [ 0, 0 ]
@@ -102,7 +101,6 @@ MouseSignal.update = function update (dT, ms) {
 }
 
 MouseSignal.prototype.toString = function () {
-  var el = this.el.toString()
   var isActive = this.active
   var prev = 'x: ' + this.previous[0] + ' y: ' + this.previous[1]
   var current = 'x: ' + this.current[0] + ' y: ' + this.current[1]

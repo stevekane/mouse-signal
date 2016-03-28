@@ -18,6 +18,14 @@ for (var i = 0, T; T = TARGETS[i++];) {
 
 FOCUSED.style.backgroundColor = 'white' 
 
+var subChild = document.createElement('div')
+subChild.style.width = '100px'
+subChild.style.height = '100px'
+subChild.style.backgroundColor = 'black'
+
+FOCUSED.id = 'FOCUSED'
+FOCUSED.appendChild(subChild)
+
 var last = Date.now()
 var current = Date.now()
 var dT = current - last
@@ -35,11 +43,11 @@ function doSomething () {
 }
 
 for (var key in state.global.eventListeners) {
-  state.global.el.addEventListener(key, state.global.eventListeners[key])
+  document.body.addEventListener(key, state.global.eventListeners[key])
 }
 
 for (var key in state.local.eventListeners) {
-  state.local.el.addEventListener(key, state.local.eventListeners[key])
+  FOCUSED.addEventListener(key, state.local.eventListeners[key])
 }
 
 requestAnimationFrame(function update () {
