@@ -1,6 +1,6 @@
 {
   "name": "mouse-signal",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Turn mouse events for a region into a simple queryable data structure",
   "main": "index.js",
   "scripts": {
