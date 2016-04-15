@@ -36,7 +36,6 @@ function MouseSignal () {
     var y = e.clientY - bcr.top
 
     self.active = true
-    self.left.nextMode = self.left.mode
     self.current[0] = x
     self.current[1] = y
   }
