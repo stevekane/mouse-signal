@@ -49,7 +49,6 @@ function MouseSignal () {
     self.left.nextMode = BUTTON_MODE.DOWN
     self.left.down[0] = x
     self.left.down[1] = y
-    e.preventDefault()
   }
 
   function mouseup (e) {
